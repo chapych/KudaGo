@@ -14,6 +14,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITypeConverter, TypeConverter>();
         services.AddScoped<IAPIAccesser, APIAccesser>();
         services.AddScoped<IKudaGoService, KudaGoService>();
+        services.AddScoped<IEndpointFactory, EndpointFactory>();
+        services.AddHttpClient();
 
         return services;
     }
