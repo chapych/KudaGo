@@ -1,13 +1,12 @@
-﻿using System.Collections.Specialized;
-using System.Web;
-using Entities.Enums;
-using Infrastructure.Configurations;
-using Infrastructure.Interfaces;
+﻿using System.Web;
+using KudaGo.Infrastructure.Configurations;
+using KudaGo.Infrastructure.Interfaces;
+using KudGo.Entities.Enums;
 using Microsoft.Extensions.Options;
 
-namespace Infrastructure.Services;
+namespace KudaGo.Infrastructure.Services;
 
-public class EndpointFactory : IEndpointFactory
+internal class EndpointFactory : IEndpointFactory
 {
     private readonly ITypeConverter _typeConverter;
 

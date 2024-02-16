@@ -1,9 +1,9 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services;
+﻿using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Services;
+using KudaGo.UseCases;
 using Microsoft.Extensions.DependencyInjection;
-using UseCases;
 
-namespace Infrastructure.Extensions;
+namespace KudaGo.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {

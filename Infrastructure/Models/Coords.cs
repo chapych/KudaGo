@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infrastructure.Models;
+namespace KudaGo.Infrastructure.Models;
 
-public class Coords
+internal class Coords
 {
     [JsonPropertyName("lat")]
     public double Latitude { get; set; }

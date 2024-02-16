@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infrastructure.Models;
+namespace KudaGo.Infrastructure.Models;
 
-public class KudaGoEventTime
+internal class KudaGoEventTime
 {
     [JsonPropertyName("start")]
     public long? Start { get; set; }

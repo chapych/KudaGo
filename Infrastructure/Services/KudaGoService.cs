@@ -1,9 +1,9 @@
-﻿using Entities.Entitites;
-using Infrastructure.Interfaces;
-using Infrastructure.Models;
-using UseCases;
+﻿using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Models;
+using KudaGo.UseCases;
+using KudGo.Entities.Entitites;
 
-namespace Infrastructure.Services;
+namespace KudaGo.Infrastructure.Services;
 
 public class KudaGoService : IKudaGoService
 {

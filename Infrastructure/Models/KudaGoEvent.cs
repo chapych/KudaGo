@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infrastructure.Models;
+namespace KudaGo.Infrastructure.Models;
 
-public class KudaGoEvent
+internal class KudaGoEvent
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }

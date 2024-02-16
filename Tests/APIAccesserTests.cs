@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Infrastructure.Interfaces;
-using Infrastructure.Services;
+using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Services;
 
 namespace Tests
 {

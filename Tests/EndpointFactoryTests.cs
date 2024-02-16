@@ -1,8 +1,8 @@
-﻿using Entities.Enums;
-using Infrastructure.Interfaces;
-using Infrastructure.Services;
+﻿using KudaGo.Infrastructure.Configurations;
+using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Services;
+using KudGo.Entities.Enums;
 using Microsoft.Extensions.Options;
-using Infrastructure.Configurations;
 
 namespace Tests
 {

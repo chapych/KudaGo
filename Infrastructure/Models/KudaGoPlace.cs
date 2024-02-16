@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infrastructure.Models;
+namespace KudaGo.Infrastructure.Models;
 
-public class KudaGoPlace
+internal class KudaGoPlace
 {
     [JsonPropertyName("title")]
     public string? Name { get; set; }

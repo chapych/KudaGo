@@ -1,4 +1,4 @@
-﻿namespace Entities.Enums;
+﻿namespace KudGo.Entities.Enums;
 
 public enum Category
 {

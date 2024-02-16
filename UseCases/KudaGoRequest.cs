@@ -1,6 +1,6 @@
-﻿using Entities.Enums;
+﻿using KudGo.Entities.Enums;
 
-namespace UseCases;
+namespace KudaGo.UseCases;
 
 public class KudaGoRequest
 {

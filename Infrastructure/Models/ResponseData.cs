@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Infrastructure.Models;
+namespace KudaGo.Infrastructure.Models;
 
-public class ResponseData
+internal class ResponseData
 {
     [JsonPropertyName("count")]
     public int Count { get; set; }

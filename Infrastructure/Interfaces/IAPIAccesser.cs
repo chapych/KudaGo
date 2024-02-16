@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Models;
+﻿using System.Runtime.CompilerServices;
+using KudaGo.Infrastructure.Models;
 
-namespace Infrastructure.Interfaces
+[assembly: InternalsVisibleTo("Tests")]
+namespace KudaGo.Infrastructure.Interfaces
 {
-    public interface IAPIAccesser
+    internal interface IAPIAccesser
     {
         Task<ResponseData?> GetResponseDataAsync(string endpoint);
     }

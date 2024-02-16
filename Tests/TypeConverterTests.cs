@@ -1,14 +1,14 @@
-using Infrastructure.Interfaces;
 using System.ComponentModel;
-using Entities.Enums;
-using Infrastructure.Services;
+using KudaGo.Infrastructure.Interfaces;
+using KudGo.Entities.Enums;
+using TypeConverter = KudaGo.Infrastructure.Services.TypeConverter;
 
 namespace Tests
 {
     internal class TypeConverterTests
     {
 #pragma warning disable CA1859
-        private readonly ITypeConverter _typeConverter = new Infrastructure.Services.TypeConverter();
+        private readonly ITypeConverter _typeConverter = new TypeConverter();
 #pragma warning restore CA1859
 
         [Test]
