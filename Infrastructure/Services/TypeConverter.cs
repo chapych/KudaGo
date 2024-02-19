@@ -1,9 +1,9 @@
-﻿using Entities.Enums;
-using Infrastructure.Interfaces;
+﻿using KudaGo.Infrastructure.Interfaces;
+using KudGo.Entities.Enums;
 
-namespace Infrastructure.Services;
+namespace KudaGo.Infrastructure.Services;
 
-public class TypeConverter : ITypeConverter
+internal class TypeConverter : ITypeConverter
 {
     private readonly Dictionary<Category, string> _categoriesToString = new()
     {

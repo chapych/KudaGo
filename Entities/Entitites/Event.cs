@@ -1,4 +1,4 @@
-﻿namespace Entities.Entitites;
+﻿namespace KudGo.Entities.Entitites;
 
 public class Event
 {

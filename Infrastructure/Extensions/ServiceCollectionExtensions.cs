@@ -1,9 +1,9 @@
-﻿using Infrastructure.Interfaces;
-using Infrastructure.Services;
+﻿using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Services;
+using KudaGo.UseCases;
 using Microsoft.Extensions.DependencyInjection;
-using UseCases;
 
-namespace Infrastructure.Extensions;
+namespace KudaGo.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -13,7 +13,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IKudaGoService, KudaGoService>();
         services.AddScoped<ITypeConverter, TypeConverter>();
         services.AddScoped<IAPIAccesser, APIAccesser>();
-        services.AddScoped<IKudaGoService, KudaGoService>();
+        services.AddScoped<IEndpointFactory, EndpointFactory>();
+        services.AddHttpClient();
 
         return services;
     }

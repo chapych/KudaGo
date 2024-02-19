@@ -1,10 +1,10 @@
 ﻿using System.Net.Http.Json;
-using Infrastructure.Interfaces;
-using Infrastructure.Models;
+using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Models;
 
-namespace Infrastructure.Services;
+namespace KudaGo.Infrastructure.Services;
 
-public class APIAccesser : IAPIAccesser
+internal class APIAccesser : IAPIAccesser
 {
     private readonly HttpClient _httpClient;
 

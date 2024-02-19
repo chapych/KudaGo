@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities.Enums;
+﻿using KudGo.Entities.Enums;
+using System.Runtime.CompilerServices;
 
-namespace Infrastructure.Interfaces
+[assembly: InternalsVisibleTo("Tests")]
+namespace KudaGo.Infrastructure.Interfaces
 {
-    public interface IEndpointFactory
+    internal interface IEndpointFactory
     {
         string Create(int pageSize, DateTime actualSince, DateTime actualUntil, Category[] categoriesField);
     }

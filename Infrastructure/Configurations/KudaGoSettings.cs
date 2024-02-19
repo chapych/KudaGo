@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Configurations;
+﻿namespace KudaGo.Infrastructure.Configurations;
 
 public class KudaGoSettings
 {

@@ -1,6 +1,6 @@
-﻿using Entities.Entitites;
+﻿using KudGo.Entities.Entitites;
 
-namespace UseCases;
+namespace KudaGo.UseCases;
 
 public interface IKudaGoService
 {

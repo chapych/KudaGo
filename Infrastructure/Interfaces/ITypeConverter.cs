@@ -1,8 +1,10 @@
-﻿using Entities.Enums;
+﻿using KudGo.Entities.Enums;
+using System.Runtime.CompilerServices;
 
-namespace Infrastructure.Interfaces;
+[assembly: InternalsVisibleTo("Tests")]
+namespace KudaGo.Infrastructure.Interfaces;
 
-public interface ITypeConverter
+internal interface ITypeConverter
 {
     string ConvertToString(Category category);
 }
