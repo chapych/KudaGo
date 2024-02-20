@@ -1,4 +1,4 @@
-﻿using KudGo.Entities.Entitites;
+﻿using KudGo.Entities.Entities;
 
 namespace KudaGo.UseCases;
 
