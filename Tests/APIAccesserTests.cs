@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KudaGo.Infrastructure.Interfaces;
+﻿using KudaGo.Infrastructure.Interfaces;
+using KudaGo.Infrastructure.Models;
 using KudaGo.Infrastructure.Services;
 
 namespace Tests
@@ -15,18 +11,31 @@ namespace Tests
 #pragma warning restore CA1859
 
         [Test]
-        public async Task APIAccess_Successful()
+        public async Task APIAccessNotNull_Successful()
         {
             var endpoint =
                 "https://kudago.com/public-api/v1.2/events/?expand=place,location,dates,participants&fields=id,place,location,dates,participants,name,description,title";
-            var responseData = await _apiAccesser.GetResponseDataAsync(endpoint);
+            var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
             Assert.Multiple(() =>
             {
                 Assert.That(responseData, Is.Not.Null);
                 Assert.That(responseData!.Events, Is.Not.Null);
-                Assert.That(responseData!.Events[0].Name, Is.Not.Null);
-                Assert.That(responseData!.Events[0].Description, Is.Not.Null);
-                Assert.That(responseData!.Events[0].Dates, Is.Not.Null);
+                Assert.That(responseData!.Events.First().Name, Is.Not.Null);
+                Assert.That(responseData!.Events.First().Description, Is.Not.Null);
+                Assert.That(responseData!.Events.First().Dates, Is.Not.Null);
+            });
+        }
+        [Test]
+        public async Task APIAccessConcrete_Successful()
+        {
+            var endpoint =
+                "https://kudago.com/public-api/v1.2/events/?expand=place,location,dates,participants&fields=id,place,location,dates,participants,name,description,title";
+            var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
+            Assert.Multiple(() =>
+            {
+                Assert.That(responseData, Is.Not.Null);
+                Assert.That(responseData!.Count, Is.EqualTo(181479));
+                Assert.That(responseData!.Events.First().Name, Is.EqualTo("Фестиваль света"));
             });
         }
     }

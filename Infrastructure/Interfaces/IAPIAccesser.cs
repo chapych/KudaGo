@@ -1,11 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
-using KudaGo.Infrastructure.Models;
 
 [assembly: InternalsVisibleTo("Tests")]
 namespace KudaGo.Infrastructure.Interfaces
 {
-    internal interface IAPIAccesser
+    public interface IAPIAccesser
     {
-        Task<ResponseData?> GetResponseDataAsync(string endpoint);
+        Task<IKudaGoData<T>?> GetResponseDataAsync<T>(string endpoint);
     }
 }

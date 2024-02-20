@@ -13,10 +13,12 @@ internal class APIAccesser : IAPIAccesser
         _httpClient = httpClient;
     }
 
-    public async Task<ResponseData?> GetResponseDataAsync(string endpoint)
+    public async Task<IKudaGoData<T>?> GetResponseDataAsync<T>(string endpoint)
     {
         var response = await _httpClient.GetAsync(endpoint);
-        var responseData = await response.Content.ReadFromJsonAsync<ResponseData>();
-        return responseData;
+        var kudaGoData = await response.Content
+            .ReadFromJsonAsync<KudaGoData<T>>();
+
+        return kudaGoData;
     }
 }

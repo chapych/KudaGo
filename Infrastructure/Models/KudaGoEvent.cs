@@ -5,15 +5,15 @@ namespace KudaGo.Infrastructure.Models;
 internal class KudaGoEvent
 {
     [JsonPropertyName("id")]
-    public int Id { get; set; }
+    public int Id { get; init; }
 
     [JsonPropertyName("title")]
-    public string Name { get; set; } = null!;
+    public string Name { get; init; } = null!;
     [JsonPropertyName("dates")]
-    public List<KudaGoEventTime>? Dates { get; set; }
+    public IEnumerable<KudaGoEventTime>? Dates { get; init; }
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string? Description { get; init; }
     [JsonPropertyName("place")]
-    public KudaGoPlace? Place { get; set; }
+    public KudaGoPlace? Place { get; init; }
 
 }

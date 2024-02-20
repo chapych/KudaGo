@@ -1,7 +1,7 @@
 ﻿using KudaGo.Infrastructure.Interfaces;
 using KudaGo.Infrastructure.Models;
 using KudaGo.UseCases;
-using KudGo.Entities.Entitites;
+using KudGo.Entities.Entities;
 
 namespace KudaGo.Infrastructure.Services;
 
@@ -13,7 +13,7 @@ public class KudaGoService : IKudaGoService
     private const int DAYS_BEFORE = 1;
     private const int DAYS_AFTER = 7;
 
-    internal KudaGoService(IAPIAccesser apiAccesser, IEndpointFactory endpointFactory)
+    public KudaGoService(IAPIAccesser apiAccesser, IEndpointFactory endpointFactory)
     {
         _apiAccesser = apiAccesser;
         _endpointFactory = endpointFactory;
@@ -30,7 +30,7 @@ public class KudaGoService : IKudaGoService
             dataUntil, 
             request.Categories);
 
-        var responseData = await _apiAccesser.GetResponseDataAsync(endpoint);
+        var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
 
         var events = new List<Event>(request.Count);
         var count = 0;
@@ -42,19 +42,17 @@ public class KudaGoService : IKudaGoService
             endpoint = responseData.Next;
             if (endpoint == null) break;
 
-            responseData = await _apiAccesser.GetResponseDataAsync(endpoint);
+            responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
         }
         return events;
     }
 
-    private static IEnumerable<Event> GetEvents(ResponseData responseData) =>
+    private static IEnumerable<Event> GetEvents(IKudaGoData<KudaGoEvent> responseData) =>
         responseData.Events.Select(x =>
             new Event(
                 x.Name,
                 x.Description,
-                x.Dates?.Select(d => d.ToDateTime()
-                ))
+                x.Dates?.Select(d => (d.Start, d.End))
+                )
         );
-
-
 }

@@ -5,12 +5,13 @@ namespace KudaGo.Infrastructure.Models;
 internal class KudaGoPlace
 {
     [JsonPropertyName("title")]
-    public string? Name { get; set; }
+    public string Name { get; init; } = null!;
+
     [JsonPropertyName("address")]
-    public string? Address { get; set; }
+    public string? Address { get; init; }
     [JsonPropertyName("subway")]
-    public string? Subway { get; set; }
+    public string? Subway { get; init; }
 
     [JsonPropertyName("coords")]
-    public Coords? Coords { get; set; }
+    public KudaGoCoords? Coords { get; init; }
 }

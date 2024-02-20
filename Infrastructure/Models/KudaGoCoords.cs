@@ -2,10 +2,10 @@
 
 namespace KudaGo.Infrastructure.Models;
 
-internal class Coords
+internal class KudaGoCoords
 {
     [JsonPropertyName("lat")]
-    public double Latitude { get; set; }
+    public double Latitude { get; init; }
     [JsonPropertyName("lon")]
-    public double Longitude { get; set; }
+    public double Longitude { get; init; }
 }

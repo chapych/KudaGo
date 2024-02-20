@@ -5,16 +5,20 @@ namespace KudaGo.Infrastructure.Models;
 internal class KudaGoEventTime
 {
     [JsonPropertyName("start")]
-    public long? Start { get; set; }
+    public long? StartUnix { get; init; }
 
     [JsonPropertyName("end")]
-    public long? End { get; set; }
+    public long? EndUnix { get; init; }
 
-    public (DateTime, DateTime) ToDateTime()
+    [JsonIgnore]
+    public DateTime Start { get; init; }
+
+    [JsonIgnore]
+    public DateTime End { get; init; }
+
+    public KudaGoEventTime()
     {
-        var start = DateTimeOffset.FromUnixTimeSeconds((long)Start!).LocalDateTime;
-        var end = DateTimeOffset.FromUnixTimeSeconds((long)End!).LocalDateTime;
-
-        return (start, end);
+        Start = DateTimeOffset.FromUnixTimeSeconds(StartUnix ?? 0).LocalDateTime;
+        End = DateTimeOffset.FromUnixTimeSeconds(EndUnix ?? 0).LocalDateTime;
     }
 }
