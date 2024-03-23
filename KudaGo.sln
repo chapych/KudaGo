@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KudaGo.UseCases", "UseCases\KudaGo.UseCases.csproj", "{3AC8D010-9281-42CC-A49F-453394EAD87A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KudGo.Entities", "Entities\KudGo.Entities.csproj", "{788ED9D1-3725-4C61-96D7-46010AEA6A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KudaGo.Entities", "Entities\KudaGo.Entities.csproj", "{788ED9D1-3725-4C61-96D7-46010AEA6A9C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KudaGo.Infrastructure", "Infrastructure\KudaGo.Infrastructure.csproj", "{5101A7CE-C2F6-442F-8B68-9B0519BF81D6}"
 EndProject

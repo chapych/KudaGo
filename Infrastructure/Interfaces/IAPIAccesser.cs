@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("Tests")]
-namespace KudaGo.Infrastructure.Interfaces
+﻿namespace KudaGo.Infrastructure.Interfaces
 {
     public interface IAPIAccesser
     {
