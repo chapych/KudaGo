@@ -7,7 +7,6 @@ namespace KudaGo.Infrastructure.Services;
 internal class APIAccesser : IAPIAccesser
 {
     private readonly HttpClient _httpClient;
-
     public APIAccesser(HttpClient httpClient)
     {
         _httpClient = httpClient;

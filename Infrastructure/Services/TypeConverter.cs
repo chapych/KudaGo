@@ -1,5 +1,6 @@
-﻿using KudaGo.Infrastructure.Interfaces;
-using KudGo.Entities.Enums;
+﻿using KudGo.Entities.Enums;
+using System.Runtime.CompilerServices;
+using KudaGo.Infrastructure.Interfaces;
 
 namespace KudaGo.Infrastructure.Services;
 
