@@ -21,6 +21,32 @@ public class KudaGoService : IKudaGoService
 
     public async Task<List<Event>> GetEventsAsync(KudaGoRequest request)
     {
+        var targetCount = request.Count;
+        var events = new List<Event>(targetCount);
+
+        var endpoint = GetEndpoint(request);
+        var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
+
+        var currentEventsCount = 0;
+        while(currentEventsCount != targetCount && responseData != null)
+        {
+            events.AddRange(GetEvents(responseData)
+                .Take(targetCount - currentEventsCount));
+            
+            currentEventsCount = events.Count;
+
+            endpoint = responseData.Next;
+
+            if (string.IsNullOrEmpty(endpoint)) 
+                break;
+
+            responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
+        }
+        return events;
+    }
+
+    private string GetEndpoint(KudaGoRequest request)
+    {
         var dataSince = request.Date.AddDays(-DAYS_BEFORE);
         var dataUntil = request.Date.AddDays(DAYS_AFTER);
 
@@ -29,22 +55,7 @@ public class KudaGoService : IKudaGoService
             dataSince, 
             dataUntil, 
             request.Categories);
-
-        var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
-
-        var events = new List<Event>(request.Count);
-        var count = 0;
-        while(count != request.Count && responseData != null)
-        {
-            events.AddRange(GetEvents(responseData).Take(request.Count - count));
-            count = events.Count;
-
-            endpoint = responseData.Next;
-            if (endpoint == null) break;
-
-            responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
-        }
-        return events;
+        return endpoint;
     }
 
     private static IEnumerable<Event> GetEvents(IKudaGoData<KudaGoEvent> responseData) =>
