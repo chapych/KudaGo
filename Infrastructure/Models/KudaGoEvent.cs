@@ -10,10 +10,12 @@ internal class KudaGoEvent
     [JsonPropertyName("title")]
     public string Name { get; init; } = null!;
     [JsonPropertyName("dates")]
-    public IEnumerable<KudaGoEventTime>? Dates { get; init; }
+    public IEnumerable<KudaGoEventTime> Dates { get; init; }
     [JsonPropertyName("description")]
-    public string? Description { get; init; }
+    public string Description { get; init; }
     [JsonPropertyName("place")]
-    public KudaGoPlace? Place { get; init; }
+    public KudaGoPlace Place { get; init; }
+    [JsonPropertyName("categories")]
+    public List<string> Categories { get; init; }
 
 }

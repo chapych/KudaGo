@@ -8,9 +8,9 @@ internal class KudaGoData<T> : IKudaGoData<T>
     [JsonPropertyName("count")]
     public int Count { get; init; }
     [JsonPropertyName("next")]
-    public string? Next { get; init; }
+    public string Next { get; init; }
     [JsonPropertyName("previous")]
-    public string? Previous { get; init; }
+    public string Previous { get; init; }
     [JsonPropertyName("results")]
     public IEnumerable<T> Events { get; init; } = null!;
 }

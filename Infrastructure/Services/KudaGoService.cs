@@ -1,7 +1,10 @@
-﻿using KudaGo.Infrastructure.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using KudaGo.Entities.Entities;
+using KudaGo.Infrastructure.Interfaces;
 using KudaGo.Infrastructure.Models;
 using KudaGo.UseCases;
 using KudGo.Entities.Entities;
+using KudaGoEvent = KudaGo.Entities.Entities.KudaGoEvent;
 
 namespace KudaGo.Infrastructure.Services;
 
@@ -9,23 +12,25 @@ public class KudaGoService : IKudaGoService
 {
     private readonly IAPIAccesser _apiAccesser;
     private readonly IEndpointFactory _endpointFactory;
+    private readonly ITypeConverter _typeConverter;
 
     private const int DAYS_BEFORE = 1;
     private const int DAYS_AFTER = 7;
 
-    public KudaGoService(IAPIAccesser apiAccesser, IEndpointFactory endpointFactory)
+    public KudaGoService(IAPIAccesser apiAccesser, IEndpointFactory endpointFactory, ITypeConverter typeConverter)
     {
         _apiAccesser = apiAccesser;
         _endpointFactory = endpointFactory;
+        _typeConverter = typeConverter;
     }
 
-    public async Task<List<Event>> GetEventsAsync(KudaGoRequest request)
+    public async Task<List<KudaGoEvent>> GetEventsAsync(KudaGoRequest request)
     {
         var targetCount = request.Count;
-        var events = new List<Event>(targetCount);
+        var events = new List<KudaGoEvent>(targetCount);
 
         var endpoint = GetEndpoint(request);
-        var responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
+        var responseData = await _apiAccesser.GetResponseDataAsync<Models.KudaGoEvent>(endpoint);
 
         var currentEventsCount = 0;
         while(currentEventsCount != targetCount && responseData != null)
@@ -40,7 +45,7 @@ public class KudaGoService : IKudaGoService
             if (string.IsNullOrEmpty(endpoint)) 
                 break;
 
-            responseData = await _apiAccesser.GetResponseDataAsync<KudaGoEvent>(endpoint);
+            responseData = await _apiAccesser.GetResponseDataAsync<Models.KudaGoEvent>(endpoint);
         }
         return events;
     }
@@ -58,12 +63,17 @@ public class KudaGoService : IKudaGoService
         return endpoint;
     }
 
-    private static IEnumerable<Event> GetEvents(IKudaGoData<KudaGoEvent> responseData) =>
+    private IEnumerable<KudaGoEvent> GetEvents(IKudaGoData<Models.KudaGoEvent> responseData) =>
         responseData.Events.Select(x =>
-            new Event(
+            new KudaGoEvent(
                 x.Name,
                 x.Description,
-                x.Dates?.Select(d => (d.Start, d.End))
-                )
-        );
+                x.Dates?.Select(d => (d.Start, d.End)),
+                x.Categories?.Select(c =>
+                {
+                    var found = _typeConverter.TryConvertToCategory(c, out var value);
+                    return (Key: c, Value: value, Found: found);
+                })
+                .Where(tuple => tuple.Found)
+                .Select(tuple => tuple.Value)));
 }

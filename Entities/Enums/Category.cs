@@ -4,5 +4,6 @@ public enum Category
 {
     BusinessEvents,
     Cinema,
-    Concert
+    Concert,
+    None
 }

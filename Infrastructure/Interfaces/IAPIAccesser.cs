@@ -2,6 +2,6 @@
 {
     public interface IAPIAccesser
     {
-        Task<IKudaGoData<T>?> GetResponseDataAsync<T>(string endpoint);
+        Task<IKudaGoData<T>> GetResponseDataAsync<T>(string endpoint);
     }
 }
