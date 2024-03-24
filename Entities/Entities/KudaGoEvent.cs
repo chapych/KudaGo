@@ -1,14 +1,18 @@
-﻿namespace KudGo.Entities.Entities;
+﻿using KudGo.Entities.Entities;
+using KudGo.Entities.Enums;
 
-public class Event
+namespace KudaGo.Entities.Entities;
+
+public class KudaGoEvent
 {
     public int Id { get; init; }
     public string Name { get; init; }
     public IEnumerable<TimePeriod>? Dates { get; init; }
     public string? Description { get; init; }
     public Place? Place { get; init; }
+    public IEnumerable<Category>? Categories { get; init; }
 
-    public Event(string name, string? description, IEnumerable<(DateTime start, DateTime end)>? dates)
+    public KudaGoEvent(string name, string? description, IEnumerable<(DateTime start, DateTime end)>? dates, IEnumerable<Category>? categories)
     {
         Name = name;
 
@@ -19,5 +23,6 @@ public class Event
         });
 
         Description = description;
+        Categories = categories;
     }
 }

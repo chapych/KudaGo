@@ -1,8 +1,9 @@
-﻿using KudGo.Entities.Entities;
+﻿using KudaGo.Entities.Entities;
+using KudGo.Entities.Entities;
 
 namespace KudaGo.UseCases;
 
 public interface IKudaGoService
 {
-    Task<List<Event>> GetEventsAsync(KudaGoRequest request);
+    Task<List<KudaGoEvent>> GetEventsAsync(KudaGoRequest request);
 }

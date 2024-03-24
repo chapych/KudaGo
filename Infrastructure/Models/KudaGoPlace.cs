@@ -8,10 +8,10 @@ internal class KudaGoPlace
     public string Name { get; init; } = null!;
 
     [JsonPropertyName("address")]
-    public string? Address { get; init; }
+    public string Address { get; init; }
     [JsonPropertyName("subway")]
-    public string? Subway { get; init; }
+    public string Subway { get; init; }
 
     [JsonPropertyName("coords")]
-    public KudaGoCoords? Coords { get; init; }
+    public KudaGoCoords Coords { get; init; }
 }

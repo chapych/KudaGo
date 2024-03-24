@@ -2,7 +2,8 @@
 
 namespace KudaGo.Infrastructure.Interfaces;
 
-internal interface ITypeConverter
+public interface ITypeConverter
 {
-    string ConvertToString(Category category);
+    bool TryConvertToString(Category category, out string value);
+    bool TryConvertToCategory(string @string, out Category value);
 }

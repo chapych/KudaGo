@@ -35,7 +35,7 @@ namespace Tests
                 new[] { Category.Cinema });
 
             Assert.That(endpoint, 
-                Is.EqualTo("https://kudago.com/public-api/v1.4/events/?location=msk&page_size=10&actual_since=946684800&actual_until=949363200&categories=cinema&text_format=text"));
+                Is.EqualTo("https://kudago.com/public-api/v1.4/events/?location=msk&page_size=10&actual_since=946684800&actual_until=949363200&categories=cinema&text_format=text&fields=id%2ctitle%2cslug%2cdescription%2ccategories"));
         }
     }
 }

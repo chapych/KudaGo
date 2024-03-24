@@ -12,6 +12,15 @@ internal class TypeConverter : ITypeConverter
         [Category.Cinema] = "cinema",
         [Category.Concert] = "concert"
     };
+    
+    private readonly Dictionary<string, Category> _stringToCategory = new()
+    {
+        ["business-events"] = Category.BusinessEvents,
+        ["cinema"] = Category.Cinema,
+        ["concert"] = Category.Concert
+    };
 
-    public string ConvertToString(Category category) => _categoriesToString[category];
+    public bool TryConvertToString(Category category, out string value) => _categoriesToString.TryGetValue(category, out value);
+
+    public bool TryConvertToCategory(string @string, out Category value) => _stringToCategory.TryGetValue(@string, out value);
 }
